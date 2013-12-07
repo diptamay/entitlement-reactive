@@ -25,5 +25,5 @@ Steps to Run
 ------------
 - Prerequisite -> Have PostgreSQL installed and running locally and have a database named `entitlementdb` is available to use. This can be changed under `conf\application.conf` for property `db.default.url=db.default.url="jdbc:postgresql://localhost:5432/entitlementdb"`	
 - `play run -DapplyEvolutions.default=true`	
-- Hit `http://localhost:9000/v1/book/0385754728/entitled/student/02a31cb0-1432-11e1-8558-0b488e4fc115`
+- In browser goto `http://localhost:9000/v1/book/0385754728/entitled/student/02a31cb0-1432-11e1-8558-0b488e4fc115`
 - To run tests -> `play test -DapplyEvolutions.default=true`
