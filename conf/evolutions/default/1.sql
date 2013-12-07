@@ -39,18 +39,13 @@ alter table school_book add constraint fk_school_book_1 foreign key (school_id) 
 alter table school_book add constraint fk_school_book_2 foreign key (isbn) references book (isbn) on delete restrict on update restrict;
 
 # --- !Downs
+drop table if exists school_student;
 
-SET REFERENTIAL_INTEGRITY FALSE;
+drop table if exists school_book;
 
 drop table if exists school;
 
 drop table if exists student;
 
 drop table if exists book;
-
-drop table if exists school_student;
-
-drop table if exists school_book;
-
-SET REFERENTIAL_INTEGRITY TRUE;
 

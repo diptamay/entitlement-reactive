@@ -15,16 +15,20 @@ class ApplicationSpec extends Specification {
 
   "Application" should {
 
-    "send 404 on a bad request" in new WithApplication{
-      route(FakeRequest(GET, "/boum")) must beNone
+    "send 404 on a bad request" in new WithApplication {
+      route(FakeRequest(GET, "/v1/books/entitled/02a31cb0-1432-11e1-8558-0b488e4fc115")) must beNone
     }
 
-    "render the index page" in new WithApplication{
+    "render the index page" in new WithApplication {
       val home = route(FakeRequest(GET, "/")).get
 
       status(home) must equalTo(OK)
       contentType(home) must beSome.which(_ == "text/html")
-      contentAsString(home) must contain ("Your new application is ready.")
+      contentAsString(home) must contain("Entitlement Checker")
+    }
+
+    "send 200 on a good request" in new WithApplication {
+      route(FakeRequest(GET, "/v1/books/0385754728/entitled/02a31cb0-1432-11e1-8558-0b488e4fc115")) must beNone
     }
   }
 }
