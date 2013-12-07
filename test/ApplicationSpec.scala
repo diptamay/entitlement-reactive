@@ -15,10 +15,6 @@ class ApplicationSpec extends Specification {
 
   "Application" should {
 
-    "send 404 on a bad request" in new WithApplication {
-      route(FakeRequest(GET, "/v1/books/entitled/02a31cb0-1432-11e1-8558-0b488e4fc115")) must beNone
-    }
-
     "render the index page" in new WithApplication {
       val home = route(FakeRequest(GET, "/")).get
 
@@ -28,7 +24,11 @@ class ApplicationSpec extends Specification {
     }
 
     "send 200 on a good request" in new WithApplication {
-      route(FakeRequest(GET, "/v1/books/0385754728/entitled/02a31cb0-1432-11e1-8558-0b488e4fc115")) must beNone
+      route(FakeRequest(GET, "/v1/books/0385754728/entitled/student/02a31cb0-1432-11e1-8558-0b488e4fc115")) must beNone
+    }
+
+    "send 404 on a bad request" in new WithApplication {
+      route(FakeRequest(GET, "/v1/books/entitled/student/02a31cb0-1432-11e1-8558-0b488e4fc115")) must beNone
     }
   }
 }
